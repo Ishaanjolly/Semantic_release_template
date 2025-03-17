@@ -8,9 +8,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out the repository
+      - name: Check out repo
         uses: actions/checkout@v3
 
       - name: Set up Node
@@ -18,10 +17,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Run semantic-release
+      - name: Semantic Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
