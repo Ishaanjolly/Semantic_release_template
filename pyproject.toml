@@ -1,9 +1,7 @@
+# pyproject.toml
 [tool.semantic_release]
-branch = "main"
-
-version_source = "tag"
-starting_version = "0.1.0"
-version_variable = "src/__init__.py:__version__"
-
-upload_to_pypi = false
-upload_to_release = true
+version_variable = "src/your_package/__init__.py:__version__"
+commit_version_number = true  
+upload_to_pypi = false        
+upload_to_release = true      
+commit_message = "chore(release): {version}"
