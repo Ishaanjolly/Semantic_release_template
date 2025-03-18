@@ -3,18 +3,32 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - main  # or your default branch name
 
 jobs:
   release:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.9'  # or whichever version you prefer
+
       - name: Install dependencies
-        run: pip install --upgrade pip setuptools wheel
-      - name: Install python-semantic-release
-        run: pip install python-semantic-release
-      - name: Release
+        run: |
+          pip install --upgrade pip setuptools wheel
+          pip install python-semantic-release
+
+      - name: Create GitHub Release (no PyPI)
+        env:
+          # GH_TOKEN is required for creating the GitHub release.
+          # GitHub Actions provides GITHUB_TOKEN automatically, or you can store a personal access token in secrets.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # This will bump the version, tag it, generate release notes, and create a GitHub release,
+          # but it won't upload anything to PyPI (since 'upload_to_pypi = false').
+          semantic-release publish
