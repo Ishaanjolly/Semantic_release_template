@@ -9,18 +9,12 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo
-        uses: actions/checkout@v3
-
-      - name: Set up Node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
-          node-version: 18
-
+          python-version: '3.9'
       - name: Install dependencies
-        run: npm install
-
-      - name: Semantic Release
-        run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pip install --upgrade pip setuptools wheel
+      - name: Install python-semantic-release
+        run: pip install python-semantic-release
+      - name: Release

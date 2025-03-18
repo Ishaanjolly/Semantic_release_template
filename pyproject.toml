@@ -1,0 +1,21 @@
+[tool.semantic_release]
+# The branch you want to release from
+branch = "main"
+
+# How to figure out the current version of your package
+# "tag" means it looks at the latest Git tag matching a pattern like v1.2.3
+# "commit" means it uses commit messages directly
+version_source = "tag"
+
+# Where we read/write the version number in your code
+# e.g. "my_package/__init__.py:__version__"
+version_variable = "src/__init__.py:__version__"
+
+# Do you want to upload to PyPI automatically?
+upload_to_pypi = true
+
+# Do you want to create GitHub/GitLab release notes (GitHub by default)?
+upload_to_release = true
+
+# By default, python-semantic-release reads your commits to decide if/how to bump version
+# If you're using conventional commits, this should just work.
