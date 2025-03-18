@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - main 
 
 jobs:
   release:
@@ -12,11 +12,13 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
+        with: 
+          fetch-depth:0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # or whichever version you prefer
+          python-version: '3.9'  
 
       - name: Install dependencies
         run: |
@@ -25,10 +27,6 @@ jobs:
 
       - name: Create GitHub Release (no PyPI)
         env:
-          # GH_TOKEN is required for creating the GitHub release.
-          # GitHub Actions provides GITHUB_TOKEN automatically, or you can store a personal access token in secrets.
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # This will bump the version, tag it, generate release notes, and create a GitHub release,
-          # but it won't upload anything to PyPI (since 'upload_to_pypi = false').
-          semantic-release publish
+        run: | # will just bump the version
+
