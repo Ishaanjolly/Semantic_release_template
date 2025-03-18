@@ -1,32 +1,30 @@
-name: Release
+name: Semantic Release
 
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   release:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v3
-        with: 
-          fetch-depth: 0
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required for full commit history
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  
+          python-version: "3.x"
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
-          pip install --upgrade pip setuptools wheel
           pip install python-semantic-release
 
-      - name: Create GitHub Release (no PyPI)
+      - name: Run Semantic Release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: | # will just bump the version
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Auto-generated secret
+        run: semantic-release publish
 
