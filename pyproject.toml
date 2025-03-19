@@ -20,5 +20,5 @@ branch = "main"
 changelog_file = "CHANGELOG.md"
 commit_message = "chore(release): release version {version} [ci skip]"
 version_variables = [
-    "src/artifacts/__init__.py:__version__"
+    "src/__init__.py:__version__"
 ]
