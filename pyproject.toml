@@ -1,5 +1,5 @@
 [tool.semantic_release]
-version_variable = "src/your_package/__init__.py:__version__"
+version_variable = "src/__init__.py:__version__"
 commit_version_number = true  
 upload_to_pypi = false        
 upload_to_release = true      
