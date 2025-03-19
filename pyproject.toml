@@ -16,8 +16,9 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.semantic_release]
-version_variable = "src/__init__.py:__version__"
-commit_version_number = true  
-upload_to_pypi = false        
-upload_to_release = false    
-commit_message = "chore(release): {version}"
+branch = "main"
+changelog_file = "CHANGELOG.md"
+commit_message = "chore(release): release version {version} [ci skip]"
+version_variables = [
+    "src/artifacts/__init__.py:__version__"
+]
