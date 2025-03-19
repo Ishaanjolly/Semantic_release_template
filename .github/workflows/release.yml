@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Auto-generated secret
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Auto-generated secret
         run: |
           semantic-release publish
 
