@@ -22,3 +22,6 @@ commit_message = "chore(release): release version {version} [ci skip]"
 version_variables = [
     "src/__init__.py:__version__"
 ]
+
+[tool.semantic_release.publish]
+upload_to_vcs_release = true
