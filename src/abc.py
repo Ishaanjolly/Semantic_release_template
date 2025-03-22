@@ -10,4 +10,4 @@ def func2(a,b):
     return a/b
 
 def func3(c,d):
-    return c/d
+    return c/d# Added new feature comment
