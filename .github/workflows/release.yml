@@ -35,4 +35,4 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "action@github.com"
-          semantic-release publish
+          ssemantic-release --verbose publish
